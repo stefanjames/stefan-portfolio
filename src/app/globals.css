@@ -1,26 +1,130 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: hsl(222 47% 11%);
+  --color-foreground: hsl(210 40% 98%);
+  --color-primary: hsl(190 100% 50%);
+  --color-primary-hover: hsl(190 100% 60%);
+  --color-secondary: hsl(265 89% 66%);
+  --color-card: hsl(222 47% 10%);
+  --color-muted: hsl(215 20% 65%);
+  --color-border: hsl(217 33% 20%);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
+  --font-heading: var(--font-outfit);
+  --font-tech: var(--font-space-grotesk);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: hsl(222 47% 11%);
+  color: hsl(210 40% 98%);
+  font-family: var(--font-sans), 'Inter', system-ui, sans-serif;
+}
+
+/* Glassmorphism card — matches Invariant Shield */
+.glass-card {
+  border: 1px solid color-mix(in oklab, white 10%, transparent);
+  background-color: color-mix(in oklab, hsl(222 47% 10%) 60%, transparent);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: color-mix(in oklab, hsl(190 100% 50%) 30%, transparent);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.1), 0 20px 25px -5px rgb(0 0 0 / 0.1);
+  transform: translateY(-2px);
+}
+
+/* Glass nav — matches Invariant Shield scrolled state */
+.glass-nav {
+  background: color-mix(in oklab, hsl(222 47% 11%) 80%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid color-mix(in oklab, white 6%, transparent);
+}
+
+/* Animated gradient text — 6s cycle like Invariant Shield */
+.text-gradient {
+  background: linear-gradient(to right, hsl(190 100% 50%), hsl(265 89% 66%), hsl(190 100% 50%));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient 6s ease infinite;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+  100% { background-position: 0% center; }
+}
+
+/* Glow button — matches Invariant Shield CTA */
+.btn-glow {
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);
+  transition: all 0.3s ease;
+}
+
+.btn-glow:hover {
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.6);
+}
+
+/* Skill badge */
+.skill-badge {
+  background: color-mix(in oklab, hsl(190 100% 50%) 10%, transparent);
+  border: 1px solid color-mix(in oklab, hsl(190 100% 50%) 20%, transparent);
+  color: hsl(190 100% 50%);
+  border-radius: 9999px;
+  padding: 0.375rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.skill-badge:hover {
+  background: color-mix(in oklab, hsl(190 100% 50%) 20%, transparent);
+  border-color: color-mix(in oklab, hsl(190 100% 50%) 40%, transparent);
+}
+
+/* Monospace label — matches Invariant Shield section labels */
+.mono-label {
+  font-family: var(--font-tech), 'Space Grotesk', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: hsl(190 100% 50%);
+}
+
+/* Noise overlay */
+.noise-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Typewriter cursor */
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background-color: hsl(190 100% 50%);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blink 1.06s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
