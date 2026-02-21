@@ -27,6 +27,13 @@ const projects: Project[] = [
     github: "https://github.com/stefanjames/secure-pharma-tracker",
   },
   {
+    title: "ChainTix — Event Ticketing DApp",
+    description:
+      "Decentralized event ticketing platform on Ethereum. Create, purchase, transfer, and refund tickets on-chain. 77 Foundry tests, 100% line coverage, full SWC Registry audit, and pull-over-push refund pattern.",
+    tags: ["Solidity", "Foundry", "React", "ethers.js"],
+    github: "https://github.com/stefanjames/event-ticketing-dapp",
+  },
+  {
     title: "Smart Contract Security Audit Portfolio",
     description:
       "Public portfolio documenting smart contract security assessments and vulnerability findings. Combines manual code review with automated analysis using Hardhat, Foundry, and Slither.",
@@ -39,14 +46,6 @@ const projects: Project[] = [
       "Jenkins pipeline integration with SonarQube SAST/DAST tooling. Blocked 600+ critical security defects pre-production and enforced DevSecOps compliance across build pipelines.",
     tags: ["Jenkins", "SonarQube", "DevSecOps", "CI/CD"],
     github: "https://github.com/stefanjames/sonarqube-integration",
-  },
-  {
-    title: "Invariant Shield",
-    description:
-      "Security-first smart contract audit platform and consulting site. Comprehensive service showcase for DeFi protocol reviews, threat modeling, and cloud & Web3 security.",
-    tags: ["React", "TypeScript", "Tailwind", "Framer Motion"],
-    github: "https://github.com/stefanjames",
-    live: "https://invariantshield.com",
   },
 ];
 
